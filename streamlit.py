@@ -10,7 +10,7 @@ def download_sheet(url):
 
 #user input
 sheet_url_input = st.text_input("Google Sheet URL:")
-tn = st.text_input(input("Input Team #: "))
+tn = st.text_input("Input Team #: ")
 
 if sheet_url_input != '' and tn != '':
     download_sheet(sheet_url_input)
