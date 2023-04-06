@@ -28,18 +28,18 @@ if sheet_url_input != '' and tn != '':
 
     pos_maxes = [key for key, value in pos_dict.items() if value == max(pos_dict.values())]
     if len(pos_maxes) == 1:
-        st.write(f"Team **{tn}** starts auto **" + pos_maxes[0] + "**of the charge station. ")
+        st.write(f"Team **{tn}** starts auto **" + pos_maxes[0] + "** of the charge station. ")
     else:
         for i in pos_maxes:
-            st.write(f"Team **{tn}** starts auto **" + i +  "**of the charge station.")
+            st.write(f"Team **{tn}** starts auto **" + i +  "** of the charge station.")
 
     als = ["Low", "Mid", "High"]
     c = 3
-    st.write("On average, ", end="")
+    st.write("On average: ", end="")
     try:
         for i in als:
             if int(x[f"Avg # of Pieces {i} Auto"]) != 0:
-                st.write(f"they place **" + str(x[f"Avg # of Pieces {i} Auto"]) + f"** pieces on the **{i}** node", end="; ")
+                st.write(f"They place **" + str(x[f"Avg # of Pieces {i} Auto"]) + f"** pieces on the **{i}** node;")
                 c -= 1
         if c == 3:
             st.write("No pieces in Auto", end="")
@@ -54,11 +54,11 @@ if sheet_url_input != '' and tn != '':
         "**mobility + engage**":float(x["AUTO % Mob + Engage"].replace("%", "")),
     }
 
-    st.write("then they get " + str(max(auto_dict, key = auto_dict.get)) + ".")
+    st.write("Then they get " + str(max(auto_dict, key = auto_dict.get)) + ".")
 
     # teleop
     try:
-        st.write("\n\nThey score **" + str(x["Avg # Game Pieces"]) + "** pieces in teleop, mainly going for ", end="")
+        st.write("\n\nThey score **" + str(x["Avg # Game Pieces"]) + "** pieces in teleop. ", end="")
     except ValueError:
         st.write("\n\nTeleop: NaN Error")
 
@@ -70,10 +70,10 @@ if sheet_url_input != '' and tn != '':
 
     teleop_maxes = [key for key, value in teleop_dict.items() if value == max(teleop_dict.values())]
     if len(teleop_maxes)==1:
-        st.write("**"+teleop_maxes[0]+"**")
+        st.write("And they mainly go for **"+teleop_maxes[0]+"**.")
     else:
         for i in teleop_maxes:
-            st.write(f"**{i}**", end=", ")
+            st.write(f"And they mainly go for **{i}**.")
 
     cc = { 
         "Cones":float(x["Avg High # Cones"])+float(x["Avg Mid # Cones"])+float(x["Avg Low # Cones"]),
@@ -81,15 +81,12 @@ if sheet_url_input != '' and tn != '':
     }
 
     if cc["Cones"]!=cc["Cubes"]:
-        st.write("and prefering to score **" + str(max(cc, key = cc.get)) + "**.")
+        st.write("They prefer to score **" + str(max(cc, key = cc.get)) + "**.")
     else:
-        st.write("and prefering to score **Both**.")
+        st.write("They prefer to score **Both**.")
 
     # defense?
     try:
-        st.write("\nThey are known to **play defense**, ", end = "") if float(x["Defense Performance"]) > 5.0 else st.write("They are known to **not play defense**, ", end="")
+        st.write("\nThey are known to **play defense**, with a **" + x["Drive Train"] + "** drivebase.") if float(x["Defense Performance"]) > 5.0 else st.write("They are known to **not play defense**, with a **" + x["Drive Train"] + "** drivebase.")
     except ValueError:
-        st.write("\nDefense: NaN Error")
-
-    #drivebase
-    st.write("with a **" + x["Drive Train"] + "** drivebase.")
+        st.write("\nDefense: NaN Error, with a **" + x["Drive Train"] + "** drivebase.")
