@@ -5,7 +5,7 @@ def convert_to_export_url(url):
     return url.replace("edit#gid","export?format=csv&gid")
 def download_sheet(url):
     sheet_url = convert_to_export_url(url)
-    df = pd.read_csv(sheet_url)
+    df = pd.read_csv(sheet_url, lineterminator='\n')
     df.to_csv('Prematch Data.csv')
 
 #user input
