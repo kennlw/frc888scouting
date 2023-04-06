@@ -2,7 +2,7 @@ import requests
 from enum import Enum
 
 headers = {
-    "X-TBA-Auth-Key": "heoitT0lSI5EKWoYmXBnjLX52R9AU7ti6tOVfnoNBTXyL05MatNIOIUthTdUMd0z"
+    "X-TBA-Auth-Key": "_"
 }
 
 class Alliance(Enum):
