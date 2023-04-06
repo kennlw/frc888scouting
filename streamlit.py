@@ -55,7 +55,7 @@ if sheet_url_input != '' and tn != '':
     }
 
     st.write("Then they get " + str(max(auto_dict, key = auto_dict.get)) + ".")
-
+    st.write("")
     # teleop
     try:
         st.write("\n\nThey score **" + str(x["Avg # Game Pieces"]) + "** pieces in teleop. ", end="")
