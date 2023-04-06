@@ -28,7 +28,7 @@ if sheet_url_input != '' and tn != '':
 
     pos_maxes = [key for key, value in pos_dict.items() if value == max(pos_dict.values())]
     if len(pos_maxes) == 1:
-        st.write(f"Team **{tn}** starts auto **" + pos_maxes[0] + "** of the charge station. ")
+        st.write(f"Auto: Team **{tn}** starts auto **" + pos_maxes[0] + "** of the charge station. ")
     else:
         for i in pos_maxes:
             st.write(f"Team **{tn}** starts auto **" + i +  "** of the charge station.")
@@ -58,7 +58,7 @@ if sheet_url_input != '' and tn != '':
     st.write("")
     # teleop
     try:
-        st.write("\n\nThey score **" + str(x["Avg # Game Pieces"]) + "** pieces in teleop. ", end="")
+        st.write("\n\nTeleop: They score **" + str(x["Avg # Game Pieces"]) + "** pieces in teleop. ", end="")
     except ValueError:
         st.write("\n\nTeleop: NaN Error")
 
